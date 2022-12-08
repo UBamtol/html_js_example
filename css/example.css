@@ -1,6 +1,13 @@
 body {
   background-color: #ccc;
 }
+
+dialog {
+  padding: 0;
+  border: 0;
+  background-color: none;
+}
+
 .inline {
   display: inline-block;
   cursor: pointer;
@@ -8,4 +15,15 @@ body {
 
 .red {
   color: red;
+}
+.modalContent {
+  width: 300px;
+  height: 200px;
+  padding: 20px;
+  border: solid 1px black;
+  border-radius: 10px;
+  /* background-color: #fff; */
+}
+#inputModal::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
 }
