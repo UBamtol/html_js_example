@@ -43,7 +43,8 @@ modalSubmitBtn.onclick = () => {
   const modalFormElement = document.querySelector('.modalForm');
   const formData = new FormData(modalFormElement);
 
-  let errorList = [];
+  const errorList = [];
+  let isError = false;
   for (const [key, value] of formData) {
     const chkName = /^[가-힣a-zA-Z]+$/;
     const chkNum = /[0-9]{9}$/;
@@ -55,24 +56,29 @@ modalSubmitBtn.onclick = () => {
         setUserName(value);
       } else {
         errorList.push('이름');
+        isError = true;
       }
     } else if (key === 'userNumber') {
       if (chkNum.test(value)) {
         setUserNo(value);
       } else {
         errorList.push('학번');
+        isError = true;
       }
     } else if (key === 'email') {
       if (chkEmail.test(value)) {
         setUserEmail(value);
-        alert('등록이 성공적으로 완료되었습니다.');
-        inputModalElement.close();
       } else {
         errorList.push('이메일');
-        alert(`${errorList.join(', ')}을 확인해주세요`);
-        errorList = [];
+        isError = true;
       }
     }
+  }
+  if (isError) {
+    alert(`${errorList.join(', ')}을 확인해주세요`);
+  } else {
+    alert('등록이 성공적으로 완료되었습니다.');
+    inputModalElement.close();
   }
 };
 
