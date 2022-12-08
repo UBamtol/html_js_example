@@ -69,7 +69,7 @@ modalSubmitBtn.onclick = () => {
         inputModalElement.close();
       } else {
         errorList.push('이메일');
-        alert(`${errorList}을 확인해주세요`);
+        alert(`${errorList.join(', ')}을 확인해주세요`);
         errorList = [];
       }
     }
